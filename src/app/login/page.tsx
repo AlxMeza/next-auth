@@ -1,7 +1,14 @@
 'use client'
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
+import { useRouter } from 'next/navigation'
 
 export default function Login () {
+    const { data: session, status } = useSession()
+    const router = useRouter()
+
+    if(status !== 'loading' && status === 'authenticated'){
+        router.push('/')
+    }
 
     return(
         <>
