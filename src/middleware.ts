@@ -6,7 +6,6 @@ export async function middleware(req: NextRequest) {
     if( !session ){
         const url = req.nextUrl.clone()
         url.pathname = '/login'
-
         return NextResponse.redirect(url)
     }
     return NextResponse.next()
